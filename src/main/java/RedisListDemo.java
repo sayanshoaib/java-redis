@@ -14,6 +14,8 @@ public class RedisListDemo {
             jedis.rpop("messages");
             var length = jedis.llen("messages");
             System.out.println(length);
+            var list = jedis.lrange("messages", 0, -1);
+            System.out.println(list);
         }
     }
 }
