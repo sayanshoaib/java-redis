@@ -2,16 +2,14 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
 public class RedisClient {
-    private String host;
-    private Integer port;
+    private static final String HOST = "localhost";
+    private static final Integer PORT = 6379;
 
-    public RedisClient(String host, Integer port) {
-        this.host = host;
-        this.port = port;
+    private RedisClient() {
     }
 
-    public Jedis getRedisConnection() {
-        JedisPool pool = new JedisPool(host, port);
+    public static Jedis getRedisConnection() {
+        JedisPool pool = new JedisPool(HOST, PORT);
         return pool.getResource();
     }
 }

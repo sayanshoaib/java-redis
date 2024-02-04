@@ -2,8 +2,7 @@ import redis.clients.jedis.Jedis;
 
 public class RedisListDemo {
     public static void main(String[] args) {
-        RedisClient client = new RedisClient("localhost", 6379);
-        try (Jedis jedis = client.getRedisConnection()) {
+        try (Jedis jedis = RedisClient.getRedisConnection()) {
             jedis.lpush("messages", "tesla");
             jedis.lpush("messages", "audi");
             jedis.lpush("messages", "bmw");
